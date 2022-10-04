@@ -620,6 +620,7 @@ class ProductDetailPageScreen extends GetWidget<ProductDetailPageController> {
                                                                                         return Container(
                                                                                           padding: EdgeInsets
                                                                                               .only(
+                                                                                              left: 10,
                                                                                               right: 10),
                                                                                           child: Row(
                                                                                             children: [
