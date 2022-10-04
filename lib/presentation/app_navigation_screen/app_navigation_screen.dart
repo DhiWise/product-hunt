@@ -113,7 +113,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                                                     ]))),
                                         GestureDetector(
                                             onTap: () {
-                                              onTapProductDetailpage();
+                                              onTapProductDetailPage();
                                             },
                                             child: Container(
                                                 width:
@@ -323,7 +323,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
     Get.toNamed(AppRoutes.productListScreen);
   }
 
-  onTapProductDetailpage() {
+  onTapProductDetailPage() {
     Get.toNamed(AppRoutes.productDetailPageScreen);
   }
 

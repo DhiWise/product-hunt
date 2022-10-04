@@ -7,12 +7,12 @@ import '../models/leaderboard_today_item_model.dart';
 // ignore: must_be_immutable
 class LeaderboardTodayItemWidget extends StatelessWidget {
   LeaderboardTodayItemWidget(this.leaderboardTodayItemModelObj,
-      {this.onTapRowrectanglefour});
+      {this.onTapRow});
 
   LeaderboardTodayItemModel leaderboardTodayItemModelObj;
 
   var controller = Get.find<LeaderboardController>();
-  VoidCallback? onTapRowrectanglefour;
+  VoidCallback? onTapRow;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class LeaderboardTodayItemWidget extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          onTapRowrectanglefour!();
+          onTapRow!();
         },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

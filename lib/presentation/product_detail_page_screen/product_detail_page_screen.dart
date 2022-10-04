@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:product_hunt/core/app_export.dart';
+import 'package:product_hunt/data/models/postId/get_post_id_resp.dart';
 import 'package:product_hunt/widgets/custom_button.dart';
 
 import 'controller/product_detail_page_controller.dart';
@@ -12,7 +13,6 @@ class ProductDetailPageScreen extends GetWidget<ProductDetailPageController> {
         child: Scaffold(
             backgroundColor: ColorConstant.gray900,
             body: Container(
-                margin: getMargin(top: 24),
                 child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -20,8 +20,9 @@ class ProductDetailPageScreen extends GetWidget<ProductDetailPageController> {
                       Align(
                           alignment: Alignment.center,
                           child: Container(
+                              height: getVerticalSize(60),
                               width: size.width,
-                              margin: getMargin(left: 26, right: 16),
+                              margin: getMargin(left: 26),
                               child: Row(
                                   mainAxisAlignment:
                                   MainAxisAlignment.spaceBetween,
@@ -46,7 +47,7 @@ class ProductDetailPageScreen extends GetWidget<ProductDetailPageController> {
                           child: Align(
                               alignment: Alignment.centerLeft,
                               child: SingleChildScrollView(
-                                  padding: getPadding(top: 24),
+                                  padding: getPadding(top: 0),
                                   child: Container(
                                       child: Column(
                                           mainAxisSize: MainAxisSize.min,
@@ -321,11 +322,11 @@ class ProductDetailPageScreen extends GetWidget<ProductDetailPageController> {
                                                                               Obx(
                                                                                     () =>
                                                                                     CarouselSlider(
-
                                                                                       options: CarouselOptions(
                                                                                         height: getVerticalSize(
                                                                                             320.00),
-                                                                                        enlargeCenterPage: true,),
+                                                                                        enlargeCenterPage: true,
+                                                                                      ),
                                                                                       items: controller
                                                                                           .productDetailPageModelObj
                                                                                           .value
@@ -351,7 +352,6 @@ class ProductDetailPageScreen extends GetWidget<ProductDetailPageController> {
                                                                                           .toList()
                                                                                           : [
                                                                                       ],
-
                                                                                     ),
                                                                               ),
                                                                             )),
@@ -411,56 +411,68 @@ class ProductDetailPageScreen extends GetWidget<ProductDetailPageController> {
                                                           Align(
                                                               alignment: Alignment
                                                                   .bottomCenter,
-                                                              child: Padding(
-                                                                  padding:
-                                                                  getPadding(
-                                                                      left: 10,
-                                                                      top: 112,
-                                                                      bottom:
-                                                                      112),
-                                                                  child: SingleChildScrollView(
-                                                                      scrollDirection: Axis
-                                                                          .horizontal,
-                                                                      child: Obx(() =>
-                                                                          Row(
-                                                                              crossAxisAlignment: CrossAxisAlignment
-                                                                                  .center,
-                                                                              mainAxisSize: MainAxisSize
-                                                                                  .max,
-                                                                              children: List
-                                                                                  .generate(
-                                                                                  controller
-                                                                                      .productDetailPageModelObj
-                                                                                      .value
-                                                                                      .topics
-                                                                                      .length, (
-                                                                                  index) {
-                                                                                return Container(
-                                                                                  padding: EdgeInsets
-                                                                                      .only(
-                                                                                      right: 5),
-                                                                                  child: CustomButton(
-                                                                                      width:
-                                                                                      155,
-                                                                                      text:
-                                                                                      controller
-                                                                                          .productDetailPageModelObj
-                                                                                          .value
-                                                                                          .topics[index]
-                                                                                          .name
-                                                                                          .toString()
-                                                                                          .toUpperCase(),
-                                                                                      variant: ButtonVariant
-                                                                                          .OutlineBluegray901,
-                                                                                      fontStyle: ButtonFontStyle
-                                                                                          .SegoeUI14),
-                                                                                );
-                                                                              })
-                                                                          ))))),
+                                                              child: Obx(
+                                                                    () =>
+                                                                    Padding(
+                                                                      padding: EdgeInsets.only(bottom: 100),
+                                                                      child: Container(
+                                                                        height: getVerticalSize(40),
+                                                                        child: ListView
+                                                                            .builder(
+                                                                            scrollDirection: Axis
+                                                                                .horizontal,shrinkWrap: true,
+                                                                            itemCount: controller
+                                                                                .productDetailPageModelObj
+                                                                                .value
+                                                                                .topics
+                                                                                .length,
+                                                                            itemBuilder:
+                                                                                (
+                                                                                context,
+                                                                                index) {
+                                                                              return Container(
+                                                                                padding:
+                                                                                EdgeInsets
+                                                                                    .only(
+                                                                                    right: 5, left: 5),
+                                                                                child: CustomButton(
+                                                                                    width: 155,
+                                                                                    text: controller
+                                                                                        .productDetailPageModelObj
+                                                                                        .value
+                                                                                        .topics[index]
+                                                                                        .name
+                                                                                        .toString()
+                                                                                        .toUpperCase(),
+                                                                                    variant: ButtonVariant
+                                                                                        .OutlineBluegray901,
+                                                                                    fontStyle: ButtonFontStyle
+                                                                                        .SegoeUI14),
+                                                                              );
+                                                                            }),
+                                                                      ),
+                                                                    ),
+                                                                // Row(
+                                                                //     crossAxisAlignment: CrossAxisAlignment
+                                                                //         .center,
+                                                                //     mainAxisSize: MainAxisSize
+                                                                //         .max,
+                                                                //     children: List
+                                                                //         .generate(
+                                                                //         controller
+                                                                //             .productDetailPageModelObj
+                                                                //             .value
+                                                                //             .topics
+                                                                //             .length, (
+                                                                //         index) {
+                                                                //     })
+                                                                // ),
+                                                              )),
                                                           Align(
                                                               alignment: Alignment
                                                                   .bottomRight,
                                                               child: Container(
+                                                                height: getVerticalSize(67),
                                                                   width:
                                                                   getHorizontalSize(
                                                                       508.00),
@@ -480,14 +492,11 @@ class ProductDetailPageScreen extends GetWidget<ProductDetailPageController> {
                                                                                 1.00),
                                                                             width: size
                                                                                 .width,
-                                                                            margin: getMargin(
-                                                                                right:
-                                                                                10),
                                                                             decoration:
                                                                             BoxDecoration(
                                                                                 color: ColorConstant
                                                                                     .bluegray901)),
-                                                                        Align(
+                                                                        /*Align(
                                                                             alignment:
                                                                             Alignment
                                                                                 .center,
@@ -585,7 +594,105 @@ class ProductDetailPageScreen extends GetWidget<ProductDetailPageController> {
                                                                                               ),
                                                                                             );
                                                                                           }),
-                                                                                        )))))
+                                                                                        )))))*/
+                                                              Align(
+                                                                  alignment: Alignment
+                                                                      .bottomCenter,
+                                                                  child: Obx(
+                                                                          () =>
+                                                                          Padding(
+                                                                            padding: EdgeInsets.only(top: 5),
+                                                                            child: Container(
+                                                                              height: getVerticalSize(60),
+                                                                              child: ListView
+                                                                                  .builder(
+                                                                                  scrollDirection: Axis
+                                                                                      .horizontal,shrinkWrap: true,
+                                                                                  itemCount: controller
+                                                                                      .productDetailPageModelObj
+                                                                                      .value
+                                                                                      .makers
+                                                                                      .length,
+                                                                                  itemBuilder:
+                                                                                      (
+                                                                                      context,
+                                                                                      index) {
+                                                                                        return Container(
+                                                                                          padding: EdgeInsets
+                                                                                              .only(
+                                                                                              right: 10),
+                                                                                          child: Row(
+                                                                                            children: [
+                                                                                              Container(
+
+                                                                                                  height: getSize(
+                                                                                                      40.00),
+                                                                                                  width: getSize(
+                                                                                                      40.00),
+                                                                                                  child: Stack(
+                                                                                                      alignment: Alignment
+                                                                                                          .topRight,
+                                                                                                      children: [
+                                                                                                        Align(
+                                                                                                            alignment: Alignment
+                                                                                                                .centerLeft,
+                                                                                                            child: ClipRRect(
+                                                                                                                borderRadius: BorderRadius
+                                                                                                                    .circular(
+                                                                                                                    getHorizontalSize(
+                                                                                                                        20.00)),
+                                                                                                                child: CommonImageView(
+                                                                                                                    url: controller
+                                                                                                                        .productDetailPageModelObj
+                                                                                                                        .value
+                                                                                                                        .makers[index]
+                                                                                                                        .imageUrl!
+                                                                                                                        .s30px
+                                                                                                                        .toString(),
+                                                                                                                    height: getSize(
+                                                                                                                        40.00),
+                                                                                                                    width: getSize(
+                                                                                                                        40.00)))),
+                                                                                                      ])),
+                                                                                              Padding(
+                                                                                                  padding: getPadding(
+                                                                                                      top: 15,
+                                                                                                      bottom: 7,
+                                                                                                    left: 5
+                                                                                                  ),
+                                                                                                  child: Text(
+                                                                                                      controller
+                                                                                                          .productDetailPageModelObj
+                                                                                                          .value
+                                                                                                          .makers[index]
+                                                                                                          .name
+                                                                                                          .toString(),
+                                                                                                      overflow: TextOverflow
+                                                                                                          .ellipsis,
+                                                                                                      textAlign: TextAlign
+                                                                                                          .left,
+                                                                                                      style: AppStyle
+                                                                                                          .txtSegoeUISemibold16
+                                                                                                          .copyWith(
+                                                                                                          height: 1.00))),
+                                                                                              Container(
+                                                                                                  height: getVerticalSize(
+                                                                                                      24.00),
+                                                                                                  width: getHorizontalSize(
+                                                                                                      1.00),
+                                                                                                  margin: getMargin(
+                                                                                                      top: 8,
+                                                                                                      bottom: 8,
+                                                                                                      left: 8),
+                                                                                                  decoration: BoxDecoration(
+                                                                                                      color: ColorConstant
+                                                                                                          .bluegray901)),
+                                                                                            ],
+                                                                                          ),
+                                                                                        );
+                                                                                  }),
+                                                                            ),
+                                                                          ),))
                                                                       ])))
                                                         ]))),
                                             Container(
@@ -593,7 +700,7 @@ class ProductDetailPageScreen extends GetWidget<ProductDetailPageController> {
                                                 margin: getMargin(top: 16),
                                                 decoration:
                                                 AppDecoration.fillBluegray900,
-                                                child: Obx(() =>
+                                                /*child: Obx(() =>
                                                     Column(
                                                       mainAxisSize:
                                                       MainAxisSize.min,
@@ -819,7 +926,242 @@ class ProductDetailPageScreen extends GetWidget<ProductDetailPageController> {
                                                           ],
                                                         );
                                                       }),
-                                                    )))
+                                                    ))*/
+                                                child: Obx(() =>
+                                                    ListView.builder(
+                                                        physics:
+                                                        NeverScrollableScrollPhysics(),
+                                                        shrinkWrap: true,
+                                                        itemCount: controller
+                                                            .productDetailPageModelObj
+                                                            .value
+                                                            .comments
+                                                            .length,
+                                                        itemBuilder: (context,
+                                                            index) {
+                                                          Comments model = controller
+                                                              .productDetailPageModelObj
+                                                              .value
+                                                              .comments[index];
+                                                          return Column(
+                                                            children: [
+                                                              Padding(
+                                                                  padding: getPadding(
+                                                                      left: 16,
+                                                                      top: 24,
+                                                                      right: 16),
+                                                                  child: Row(
+                                                                      mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .start,
+                                                                      crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                      mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                      children: [
+                                                                        Padding(
+                                                                            padding: getPadding(
+                                                                                top: 2,
+                                                                                bottom:
+                                                                                2),
+                                                                            child: ClipRRect(
+                                                                                borderRadius:
+                                                                                BorderRadius
+                                                                                    .circular(
+                                                                                    getHorizontalSize(
+                                                                                        20.00)),
+                                                                                child: CommonImageView(
+                                                                                    url:
+                                                                                    controller
+                                                                                        .productDetailPageModelObj
+                                                                                        .value
+                                                                                        .comments[index]
+                                                                                        .user!
+                                                                                        .imageUrl!
+                                                                                        .s30px,
+                                                                                    height: getSize(
+                                                                                        40.00),
+                                                                                    width: getSize(
+                                                                                        40.00)))),
+                                                                        Container(
+                                                                            margin: getMargin(
+                                                                                left: 8,
+                                                                                top: 5,
+                                                                                bottom:
+                                                                                2),
+                                                                            child: Column(
+                                                                                mainAxisSize:
+                                                                                MainAxisSize
+                                                                                    .min,
+                                                                                crossAxisAlignment:
+                                                                                CrossAxisAlignment
+                                                                                    .start,
+                                                                                mainAxisAlignment:
+                                                                                MainAxisAlignment
+                                                                                    .start,
+                                                                                children: [
+                                                                                  Padding(
+                                                                                      padding: getPadding(
+                                                                                          right: 10),
+                                                                                      child: Text(
+                                                                                          controller
+                                                                                              .productDetailPageModelObj
+                                                                                              .value
+                                                                                              .comments[index]
+                                                                                              .user!
+                                                                                              .name
+                                                                                              .toString(),
+                                                                                          overflow: TextOverflow
+                                                                                              .ellipsis,
+                                                                                          textAlign: TextAlign
+                                                                                              .left,
+                                                                                          style: AppStyle
+                                                                                              .txtSegoeUIBold16
+                                                                                              .copyWith())),
+                                                                                ]))
+                                                                      ])),
+                                                              Row(
+                                                                crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                                children: [
+                                                                  Container(
+                                                                    width:
+                                                                    getHorizontalSize(
+                                                                        420),
+                                                                    child: Padding(
+                                                                        padding:
+                                                                        getPadding(
+                                                                            left:
+                                                                            16,
+                                                                            top: 23,
+                                                                            right:
+                                                                            16),
+                                                                        child: Text(
+                                                                            controller
+                                                                                .productDetailPageModelObj
+                                                                                .value
+                                                                                .comments[
+                                                                            index]
+                                                                                .body
+                                                                                .toString(),
+                                                                            overflow:
+                                                                            TextOverflow
+                                                                                .ellipsis,
+                                                                            textAlign:
+                                                                            TextAlign
+                                                                                .start,
+                                                                            style: AppStyle
+                                                                                .txtSegoeUI16WhiteA700
+                                                                                .copyWith(
+                                                                                height:
+                                                                                1.00))),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                                children: [
+                                                                  Padding(
+                                                                      padding:
+                                                                      getPadding(
+                                                                          left: 16,
+                                                                          top: 17,
+                                                                          right:
+                                                                          16),
+                                                                      child: Row(
+                                                                          mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .start,
+                                                                          crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                          mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .min,
+                                                                          children: [
+                                                                            Padding(
+                                                                                padding: getPadding(
+                                                                                    left:
+                                                                                    1,
+                                                                                    top:
+                                                                                    4,
+                                                                                    bottom:
+                                                                                    4),
+                                                                                child: CommonImageView(
+                                                                                    svgPath:
+                                                                                    ImageConstant
+                                                                                        .imgVectorBluegray400,
+                                                                                    height: getVerticalSize(
+                                                                                        8.00),
+                                                                                    width: getHorizontalSize(
+                                                                                        10.00))),
+                                                                            Padding(
+                                                                                padding: getPadding(
+                                                                                    left:
+                                                                                    5,
+                                                                                    top:
+                                                                                    1,
+                                                                                    bottom:
+                                                                                    1),
+                                                                                child: Text(
+                                                                                    "lbl_upvote"
+                                                                                        .tr,
+                                                                                    overflow:
+                                                                                    TextOverflow
+                                                                                        .ellipsis,
+                                                                                    textAlign: TextAlign
+                                                                                        .left,
+                                                                                    style: AppStyle
+                                                                                        .txtGilroySemiBold14
+                                                                                        .copyWith())),
+                                                                            Padding(
+                                                                                padding: getPadding(
+                                                                                    left:
+                                                                                    26,
+                                                                                    top:
+                                                                                    8,
+                                                                                    bottom:
+                                                                                    8),
+                                                                                child: CommonImageView(
+                                                                                    svgPath:
+                                                                                    ImageConstant
+                                                                                        .imgMorehorizontal,
+                                                                                    height: getVerticalSize(
+                                                                                        1.00),
+                                                                                    width: getHorizontalSize(
+                                                                                        8.00))),
+                                                                            Padding(
+                                                                                padding: getPadding(
+                                                                                    left:
+                                                                                    26,
+                                                                                    top:
+                                                                                    3),
+                                                                                child: Text(
+                                                                                    controller
+                                                                                        .productDetailPageModelObj
+                                                                                        .value
+                                                                                        .comments[index]
+                                                                                        .createdAt
+                                                                                        .toString(),
+                                                                                    overflow:
+                                                                                    TextOverflow
+                                                                                        .ellipsis,
+                                                                                    textAlign: TextAlign
+                                                                                        .left,
+                                                                                    style: AppStyle
+                                                                                        .txtGilroySemiBold14
+                                                                                        .copyWith()))
+                                                                          ])),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          );
+                                                        })))
                                           ])))))
                     ]))));
   }

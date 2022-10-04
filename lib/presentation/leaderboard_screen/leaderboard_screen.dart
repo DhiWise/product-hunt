@@ -97,9 +97,9 @@ class LeaderboardScreen extends GetWidget<LeaderboardController> {
                                                                         .leaderboardTodayItemList[index];
                                                                 return LeaderboardTodayItemWidget(
                                                                     model,
-                                                                    onTapRowrectanglefour:
+                                                                    onTapRow:
                                                                         () {
-                                                                  onTapRowrectanglefour(
+                                                                          onTapRow(
                                                                       index);
                                                                 });
                                                               }))),
@@ -143,9 +143,9 @@ class LeaderboardScreen extends GetWidget<LeaderboardController> {
                                                                         .leaderboardMonthItemList[index];
                                                                 return LeaderboardMonthItemWidget(
                                                                     model,
-                                                                    onTapRowrectanglefour:
+                                                                    onTapRow:
                                                                         () {
-                                                                  onTapRowrectanglefour(
+                                                                          onTapRow(
                                                                       index);
                                                                 });
                                                               }))),
@@ -189,9 +189,9 @@ class LeaderboardScreen extends GetWidget<LeaderboardController> {
                                                                         .leaderboardYearItemList[index];
                                                                 return LeaderboardYearItemWidget(
                                                                     model,
-                                                                    onTapRowrectanglefour:
+                                                                    onTapRow:
                                                                         () {
-                                                                  onTapRowrectanglefour(
+                                                                          onTapRow(
                                                                       index);
                                                                 });
                                                               })))
@@ -355,7 +355,7 @@ class LeaderboardScreen extends GetWidget<LeaderboardController> {
     Get.toNamed(AppRoutes.topicsListWithSearchingScreen);
   }
 
-  onTapRowrectanglefour(int index) {
+  onTapRow(int index) {
     Get.toNamed(AppRoutes.productDetailPageScreen, arguments: {
       NavigationArgs.postid: controller.getAllResp.posts![index].id.toString()
     });

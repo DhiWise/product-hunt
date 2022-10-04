@@ -7,12 +7,12 @@ import '../models/leaderboard_month_item_model.dart';
 // ignore: must_be_immutable
 class LeaderboardMonthItemWidget extends StatelessWidget {
   LeaderboardMonthItemWidget(this.leaderboardMonthItemModelObj,
-      {this.onTapRowrectanglefour});
+      {this.onTapRow});
 
   LeaderboardMonthItemModel leaderboardMonthItemModelObj;
 
   var controller = Get.find<LeaderboardController>();
-  VoidCallback? onTapRowrectanglefour;
+  VoidCallback? onTapRow;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class LeaderboardMonthItemWidget extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          onTapRowrectanglefour!();
+          onTapRow!();
         },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
