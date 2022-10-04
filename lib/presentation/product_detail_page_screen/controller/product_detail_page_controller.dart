@@ -7,7 +7,7 @@ import 'package:product_hunt/presentation/product_detail_page_screen/models/prod
 import '/core/app_export.dart';
 
 class ProductDetailPageController extends GetxController {
-  //var postid = Get.arguments[NavigationArgs.postid];
+  var postid = Get.arguments[NavigationArgs.postid];
 
   Rx<ProductDetailPageModel> productDetailPageModelObj =
       ProductDetailPageModel().obs;
@@ -20,8 +20,8 @@ class ProductDetailPageController extends GetxController {
     this.callFetchPostId(
         successCall: _onFetchPostIdSuccess,
         errCall: _onFetchPostIdError,
-        //postId: Get.arguments[NavigationArgs.postid.toString()]
-        postId: "360534"
+        postId: Get.arguments[NavigationArgs.postid.toString()]
+        //postId: "360534"
     );
   }
 
